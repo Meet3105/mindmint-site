@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+    <defs>
+        <linearGradient id="bgSlateGrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1E293B"/>
+            <stop offset="100%" stop-color="#0F172A"/>
+        </linearGradient>
+        <linearGradient id="mintTechGrad" x1="128" y1="150" x2="384" y2="362" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#34D399"/>
+            <stop offset="100%" stop-color="#059669"/>
+        </linearGradient>
+        <filter id="nodeGlow" x="300" y="75" width="140" height="140" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feGaussianBlur stdDeviation="12" result="blur"/>
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#bgSlateGrad)" stroke="#334155" stroke-width="6"/>
+    <path d="M144 96H104C97.3726 96 92 101.373 92 108V148" stroke="#34D399" stroke-width="20" stroke-linecap="round" stroke-opacity="0.75"/>
+    <path d="M368 416H408C414.627 416 420 410.627 420 404V364" stroke="#34D399" stroke-width="20" stroke-linecap="round" stroke-opacity="0.75"/>
+    <path d="M138 356V176L256 272L374 176V356" stroke="url(#mintTechGrad)" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="374" cy="136" r="26" fill="#34D399" filter="url(#nodeGlow)"/>
+</svg>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mindmint.co.in | Digital Service Studio, Products & Financial Advisory</title>
+    <meta name="description" content="mindmint.co.in — Digital service studio offering custom landing pages, portfolio sites, graphic design, useful digital products, and finance & tax advisory.">
+    <link rel="icon" type="image/svg+xml" href="mindmint-logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        mint: {
+                            50: '#ECFDF5',
+                            100: '#D1FAE5',
+                            200: '#A7F3D0',
+                            400: '#34D399',
+                            500: '#10B981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064E3B',
+                        },
+                        slate: {
+                            50: '#F8FAFC',
+                            100: '#F1F5F9',
+                            200: '#E2E8F0',
+                            300: '#CBD5E1',
+                            400: '#94A3B8',
+                            500: '#64748B',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1E293B',
+                            850: '#162032',
+                            900: '#0F172A',
+                        }
+                    },
+                    boxShadow: {
+                        'mint': '0 10px 30px -10px rgba(5, 150, 105, 0.24)',
+                        'card': '0 4px 20px -2px rgba(15, 23, 42, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html, body { max-width: 100%; overflow-x: hidden; background-color: #F8FAFC; color: #0F172A; }
+        .mint-grid-bg { background-image: radial-gradient(rgba(5, 150, 105, 0.13) 1px, transparent 1px); background-size: 24px 24px; }
+        .glass-nav { background: rgba(248, 250, 252, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .tab-active { background-color: #059669; color: #FFFFFF; box-shadow: 0 4px 12px -2px rgba(5, 150, 105, 0.28); }
+        .tab-inactive { background-color: transparent; color: #475569; }
+        .tab-inactive:hover { background-color: #ECFDF5; color: #047857; }
+    </style>
+</head>
+<body class="antialiased selection:bg-mint-100 selection:text-mint-900 flex flex-col min-h-screen">
+    <div id="toast-container" class="fixed bottom-5 right-5 left-5 sm:left-auto z-50 flex flex-col items-end gap-2 pointer-events-none"></div>
+
+    <!-- STICKY NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#home" onclick="switchView('all')" class="flex items-center gap-3 group focus:outline-none min-h-[44px]">
+                    <div class="w-11 h-11 rounded-xl bg-slate-900 flex items-center justify-center shadow-xs group-hover:bg-slate-800 border border-slate-800 transition-all duration-300 shrink-0">
+                        <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="mintTechGradNav" x1="6" y1="8" x2="30" y2="28" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#34D399"/>
+                                    <stop offset="100%" stop-color="#059669"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M10 6H7C6.44772 6 6 6.44772 6 7V10" stroke="#34D399" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.7"/>
+                            <path d="M26 30H29C29.5523 30 30 29.5523 30 29V26" stroke="#34D399" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.7"/>
+                            <path d="M9.5 25.5V12.5L18 19.5L26.5 12.5V25.5" stroke="url(#mintTechGradNav)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="26.5" cy="9.5" r="2.2" fill="#34D399"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-extrabold text-xl tracking-tight text-slate-900 leading-none">
+                            mind<span class="text-mint-600">mint</span><span class="text-slate-500 font-semibold text-base">.co.in</span>
+                        </span>
+                        <span class="text-[10px] font-semibold text-slate-500 tracking-widest uppercase mt-1">Digital Service Studio</span>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-full border border-slate-200/80" aria-label="Main Navigation">
+                    <a href="#home" onclick="switchView('all')" class="px-4 py-2 rounded-full text-sm font-medium text-slate-700 hover:text-mint-700 hover:bg-white transition-all">Home &amp; Services</a>
+                    <a href="#products" onclick="switchView('all')" class="px-4 py-2 rounded-full text-sm font-medium text-slate-700 hover:text-mint-700 hover:bg-white transition-all flex items-center gap-1.5">
+                        <span>Our Products</span>
+                        <span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-mint-100 text-mint-700">3</span>
+                    </a>
+                    <a href="#contact" onclick="switchView('all')" class="px-4 py-2 rounded-full text-sm font-medium text-slate-700 hover:text-mint-700 hover:bg-white transition-all">Contact Us</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <a href="#contact" class="hidden sm:inline-flex items-center justify-center gap-2 px-5 py-2.5 min-h-[44px] rounded-xl bg-slate-900 hover:bg-mint-600 text-white font-semibold text-sm shadow-xs hover:shadow-mint transition-all duration-200">
+                        <span>Get in Touch</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle Menu" class="md:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-800 hover:bg-mint-50 hover:text-mint-700 focus:outline-none transition-colors">
+                        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-lg">
+            <a href="#home" onclick="closeMobileMenu()" class="flex items-center px-4 py-3 min-h-[44px] rounded-xl text-base font-medium text-slate-800 hover:bg-mint-50 hover:text-mint-700 transition-colors">Home &amp; Services</a>
+            <a href="#products" onclick="closeMobileMenu()" class="flex items-center justify-between px-4 py-3 min-h-[44px] rounded-xl text-base font-medium text-slate-800 hover:bg-mint-50 hover:text-mint-700 transition-colors">
+                <span>Our Products</span>
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-mint-100 text-mint-700">3 Products</span>
+            </a>
+            <a href="#contact" onclick="closeMobileMenu()" class="flex items-center px-4 py-3 min-h-[44px] rounded-xl text-base font-medium text-slate-800 hover:bg-mint-50 hover:text-mint-700 transition-colors">Contact Us</a>
+            <div class="pt-2">
+                <a href="#contact" onclick="closeMobileMenu()" class="w-full flex justify-center items-center gap-2 px-5 py-3.5 min-h-[44px] rounded-xl bg-mint-600 hover:bg-mint-700 text-white font-semibold text-sm transition-colors">Email: work@mindmint.co.in</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HERO & SERVICES -->
+        <section id="home" class="scroll-mt-20 relative overflow-hidden mint-grid-bg pt-12 pb-20 lg:pt-20 lg:pb-28 border-b border-slate-200/80">
+            <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] h-[320px] bg-mint-200/35 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-mint-50 border border-mint-200 text-mint-700 text-xs sm:text-sm font-semibold mb-6 shadow-xs">
+                        <svg class="w-4 h-4 text-mint-600 shrink-0" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 18V8L12 14L20 8V18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="20" cy="5.5" r="1.8" fill="#10B981"/>
+                        </svg>
+                        <span>Digital Service Studio &amp; Financial Advisory</span>
+                    </div>
+                    <h1 class="font-display font-extrabold text-[clamp(2rem,4.5vw,3.4rem)] text-slate-900 tracking-tight leading-[1.15] mb-6">
+                        Modern digital services &amp; trusted <span class="text-mint-600">financial advisory</span> under one roof.
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto">
+                        <strong class="text-slate-900 font-semibold">mindmint.co.in</strong> builds clean landing pages, portfolio sites, and custom websites, sells useful digital products, creates simple graphic designs, and provides reliable finance &amp; tax services.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5">
+                        <a href="#products" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 min-h-[48px] rounded-xl bg-mint-600 hover:bg-mint-700 text-white font-semibold text-sm sm:text-base shadow-mint transition-all">
+                            <span>Explore Our Products</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 min-h-[48px] rounded-xl bg-white hover:bg-mint-50 text-slate-900 hover:text-mint-700 border border-slate-200 hover:border-mint-200 font-semibold text-sm sm:text-base shadow-xs transition-all">
+                            <span>Start a Project</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4-Card Core Services -->
+                <div class="mt-16 lg:mt-24">
+                    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-2">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-widest text-mint-600">What We Do</span>
+                            <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-900 mt-1">Core Services &amp; Capabilities</h2>
+                        </div>
+                        <p class="text-sm text-slate-500">Tailored execution for creators, startups, and growing businesses.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="group bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card hover:border-mint-500/70 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-xl bg-mint-50 border border-mint-200 text-mint-600 flex items-center justify-center mb-5 group-hover:bg-mint-600 group-hover:text-white transition-colors">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                                </div>
+                                <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Web Development</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">Simple landing pages, personal &amp; professional portfolio sites, and custom websites engineered for speed and clarity.</p>
+                            </div>
+                            <button type="button" onclick="selectServiceAndScroll('Web Design & Development')" class="mt-5 min-h-[40px] inline-flex items-center gap-1.5 text-xs font-semibold text-mint-600 hover:text-mint-700 cursor-pointer">
+                                <span>Request a site</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="group bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card hover:border-mint-500/70 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-xl bg-mint-50 border border-mint-200 text-mint-600 flex items-center justify-center mb-5 group-hover:bg-mint-600 group-hover:text-white transition-colors">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                                </div>
+                                <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Digital Products</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">Practical, ready-to-use digital products, AI prompt libraries, and productivity resources built to save time every day.</p>
+                            </div>
+                            <a href="#products" class="mt-5 min-h-[40px] inline-flex items-center gap-1.5 text-xs font-semibold text-mint-600 hover:text-mint-700">
+                                <span>Browse products</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+
+                        <div class="group bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card hover:border-mint-500/70 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-xl bg-mint-50 border border-mint-200 text-mint-600 flex items-center justify-center mb-5 group-hover:bg-mint-600 group-hover:text-white transition-colors">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                                </div>
+                                <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Simple Graphic Design</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">Clean, impactful visual designs for social media graphics, brand identities, pitch decks, and digital marketing assets.</p>
+                            </div>
+                            <button type="button" onclick="selectServiceAndScroll('Graphic Design')" class="mt-5 min-h-[40px] inline-flex items-center gap-1.5 text-xs font-semibold text-mint-600 hover:text-mint-700 cursor-pointer">
+                                <span>Inquire design</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="group bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card hover:border-mint-500/70 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-xl bg-mint-50 border border-mint-200 text-mint-600 flex items-center justify-center mb-5 group-hover:bg-mint-600 group-hover:text-white transition-colors">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                </div>
+                                <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Finance &amp; Tax Services</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">Reliable financial consulting, bookkeeping support, and tax filing &amp; compliance services via KG Association.</p>
+                            </div>
+                            <button type="button" onclick="selectServiceAndScroll('KG Association - Finance & Tax')" class="mt-5 min-h-[40px] inline-flex items-center gap-1.5 text-xs font-semibold text-mint-600 hover:text-mint-700 cursor-pointer">
+                                <span>Consult advisor</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR PRODUCTS -->
+        <section id="products" class="scroll-mt-20 py-20 lg:py-28 bg-gradient-to-b from-[#F0FDF4] via-[#ECFDF5]/60 to-[#F8FAFC] border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                    <div class="max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-50 border border-mint-200 text-mint-700 text-xs font-bold uppercase tracking-wider mb-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-mint-600"></span>
+                            Our Ecosystem
+                        </div>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight">Our Products &amp; Ventures</h2>
+                        <p class="text-slate-600 mt-3 text-base">Explore our specialized financial practice, curated digital products, and upcoming productivity platforms built under the mindmint umbrella.</p>
+                    </div>
+
+                    <div class="inline-flex flex-wrap gap-1.5 bg-mint-50/90 p-1.5 rounded-2xl border border-slate-200 self-start md:self-auto shadow-2xs" role="tablist" aria-label="Filter Products">
+                        <button type="button" onclick="filterProducts('all', this)" class="filter-btn tab-active px-4 py-2 min-h-[40px] rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer">All (3)</button>
+                        <button type="button" onclick="filterProducts('finance', this)" class="filter-btn tab-inactive px-4 py-2 min-h-[40px] rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer">Finance &amp; Tax</button>
+                        <button type="button" onclick="filterProducts('digital', this)" class="filter-btn tab-inactive px-4 py-2 min-h-[40px] rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer">AI &amp; Productivity</button>
+                        <button type="button" onclick="filterProducts('productivity', this)" class="filter-btn tab-inactive px-4 py-2 min-h-[40px] rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer">Goal Tracking</button>
+                    </div>
+                </div>
+
+                <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- KG Association -->
+                    <article data-category="finance" class="product-card rounded-2xl bg-white border border-mint-100 p-7 sm:p-8 flex flex-col justify-between shadow-card hover:border-mint-600 hover:shadow-lg hover:shadow-emerald-900/5 transition-all duration-300">
+                        <div>
+                            <div class="flex items-center justify-between gap-3 mb-6">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-mint-50 text-mint-700 border border-mint-200">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-mint-600"></span>
+                                    Finance &amp; Tax
+                                </span>
+                                <span class="text-xs font-semibold text-slate-400">Active &bull; 01</span>
+                            </div>
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-mint-50 border border-mint-200 text-mint-600 flex items-center justify-center shrink-0" aria-hidden="true">
+                                    <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="4.5" y="4.5" width="27" height="27" rx="6" stroke="#059669" stroke-width="1.6" stroke-opacity="0.35"/>
+                                        <path d="M10.5 11.5V24.5M10.5 18L16.2 11.5M12.7 15.8L16.7 24.5" stroke="#0F172A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M25.5 14.2C24.6 12.6 23.1 11.7 21.4 11.7C18.8 11.7 17.2 13.9 17.2 18C17.2 22.1 18.8 24.3 21.5 24.3C23.8 24.3 25.5 22.8 25.5 20.4V18.5H21.8" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">KG Association</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">Provides financial and tax-related services, compliance support, and advisory for individuals and businesses.</p>
+                            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 mb-8 border-t border-slate-100 pt-5">
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-mint-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>
+                                    <span>Tax filing, GST &amp; regulatory compliance</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-mint-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>
+                                    <span>Personal &amp; business financial planning</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://walink.me/j476fe" target="_blank" rel="noopener noreferrer" class="w-full min-h-[46px] inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 hover:bg-mint-600 text-white font-semibold text-sm transition-colors shadow-xs">
+                            <span>Enquire Now</span>
+                            <svg class="w-4 h-4 text-mint-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </article>
+
+                    <!-- PromptShelff -->
+                    <article data-category="digital" class="product-card rounded-2xl bg-white border border-mint-100 p-7 sm:p-8 flex flex-col justify-between shadow-card hover:border-mint-600 hover:shadow-lg hover:shadow-emerald-900/5 transition-all duration-300">
+                        <div>
+                            <div class="flex items-center justify-between gap-3 mb-6">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-mint-50 text-mint-700 border border-mint-200">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-mint-600"></span>
+                                    AI &amp; Productivity
+                                </span>
+                                <span class="text-xs font-semibold text-mint-700">Live &bull; 02</span>
+                            </div>
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-mint-50 border border-mint-200 text-mint-600 flex items-center justify-center shrink-0" aria-hidden="true">
+                                    <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="6" y="7" width="10" height="9" rx="2.5" stroke="#0F172A" stroke-width="2"/>
+                                        <rect x="20" y="7" width="10" height="9" rx="2.5" stroke="#059669" stroke-width="2"/>
+                                        <rect x="6" y="20" width="10" height="9" rx="2.5" stroke="#059669" stroke-width="2"/>
+                                        <path d="M25 19.5V29.5M20 24.5H30" stroke="#0F172A" stroke-width="2.2" stroke-linecap="round"/>
+                                        <circle cx="25" cy="24.5" r="2" fill="#059669"/>
+                                    </svg>
+                                </div>
+                                <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">PromptShelff</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">Curated ChatGPT prompt pack designed to boost daily productivity, content creation, and workflow automation.</p>
+                            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 mb-8 border-t border-slate-100 pt-5">
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-mint-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>
+                                    <span>Structured, plug-and-play AI prompts</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-mint-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>
+                                    <span>Instant digital access via web app</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://promptshelff.netlify.app/" target="_blank" rel="noopener noreferrer" class="w-full min-h-[46px] inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-mint-600 hover:bg-mint-700 text-white font-semibold text-sm transition-colors shadow-mint">
+                            <span>Explore PromptShelff</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </article>
+
+                    <!-- 1LakhGoals -->
+                    <article data-category="productivity" class="product-card rounded-2xl bg-white border border-mint-100 p-7 sm:p-8 flex flex-col justify-between shadow-card hover:border-mint-600 hover:shadow-lg hover:shadow-emerald-900/5 transition-all duration-300 md:col-span-2 lg:col-span-1">
+                        <div>
+                            <div class="flex items-center justify-between gap-3 mb-6">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-mint-50 text-mint-700 border border-mint-200">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-mint-600"></span>
+                                    Goal Tracking
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-300">Coming Soon</span>
+                            </div>
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-mint-50 border border-mint-200 text-mint-600 flex items-center justify-center shrink-0" aria-hidden="true">
+                                    <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="18" cy="18" r="11.5" stroke="#0F172A" stroke-width="2"/>
+                                        <circle cx="18" cy="18" r="6.5" stroke="#059669" stroke-width="1.8" stroke-dasharray="3 2"/>
+                                        <path d="M14.5 18.2L17 20.7L22 15.5" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">1LakhGoals</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">List your goals and organize your personal, career, and financial milestones in one distraction-free workspace.</p>
+                            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 mb-8 border-t border-slate-100 pt-5">
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-mint-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>
+                                    <span>Simple milestone &amp; goal list tracker</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-mint-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    <span>Currently in active development</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="button" onclick="selectServiceAndScroll('1LakhGoals - Early Access / Notify Me')" class="w-full min-h-[46px] inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-mint-50 hover:bg-mint-100 text-mint-700 border border-mint-200 font-semibold text-sm transition-all cursor-pointer">
+                            <svg class="w-4 h-4 text-mint-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                            <span>Coming Soon &mdash; Notify Me</span>
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT US -->
+        <section id="contact" class="scroll-mt-20 py-20 lg:py-28 bg-slate-50 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-50 border border-mint-200 text-mint-700 text-xs font-bold uppercase tracking-wider">Contact Us</div>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight">Let’s build or simplify something together.</h2>
+                        <p class="text-slate-600 text-base leading-relaxed">Have a website idea, need clean graphics, want to explore our digital products, or looking for tax and financial guidance? Reach out directly via email or send an enquiry.</p>
+
+                        <div class="bg-slate-900 rounded-2xl p-6 sm:p-7 text-white shadow-card border border-slate-800">
+                            <div class="text-xs font-semibold uppercase tracking-wider text-mint-400 mb-2">Official Email</div>
+                            <div class="flex items-center justify-between gap-2 bg-slate-850 border border-slate-700/80 rounded-xl p-3.5 mb-5">
+                                <span id="official-email" class="font-display font-bold text-sm sm:text-lg text-white truncate select-all">work@mindmint.co.in</span>
+                                <button type="button" onclick="copyEmailAddress()" class="shrink-0 min-h-[38px] inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-mint-600 hover:bg-mint-500 text-white text-xs font-semibold transition-colors cursor-pointer">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                    <span id="copy-btn-text">Copy</span>
+                                </button>
+                            </div>
+                            <a href="mailto:work@mindmint.co.in?subject=Enquiry%20from%20mindmint.co.in" class="w-full min-h-[46px] inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-mint-50 text-slate-900 font-semibold text-sm transition-colors">
+                                <svg class="w-4 h-4 text-mint-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                <span>Open Default Mail App</span>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                            <div class="bg-white rounded-2xl p-4 border border-slate-200/90">
+                                <div class="font-display font-bold text-slate-900 text-sm">Fast Turnaround</div>
+                                <p class="text-xs text-slate-500 mt-1">Clear communication &amp; timely delivery on every project.</p>
+                            </div>
+                            <div class="bg-white rounded-2xl p-4 border border-slate-200/90">
+                                <div class="font-display font-bold text-slate-900 text-sm">All-in-One Hub</div>
+                                <p class="text-xs text-slate-500 mt-1">Tech, design &amp; tax compliance managed seamlessly.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7">
+                        <div class="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200/90 shadow-card">
+                            <h3 class="font-display font-bold text-2xl text-slate-900 mb-2">Send an Enquiry</h3>
+                            <p class="text-sm text-slate-500 mb-7">Fill in the details below and we will get back to you promptly.</p>
+                            <form id="enquiry-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label for="sender-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">Your Name *</label>
+                                        <input type="text" id="sender-name" name="name" required placeholder="e.g. Aarav Sharma" class="w-full min-h-[46px] px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:border-mint-600 focus:ring-2 focus:ring-mint-600/20 outline-none transition-all">
+                                    </div>
+                                    <div>
+                                        <label for="sender-email" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">Your Email *</label>
+                                        <input type="email" id="sender-email" name="email" required placeholder="you@example.com" class="w-full min-h-[46px] px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:border-mint-600 focus:ring-2 focus:ring-mint-600/20 outline-none transition-all">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="service-select" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">Service or Product of Interest</label>
+                                    <select id="service-select" name="service" class="w-full min-h-[46px] px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:border-mint-600 focus:ring-2 focus:ring-mint-600/20 outline-none transition-all">
+                                        <option value="Web Design & Development">Web Design &amp; Development (Landing / Portfolio / Business Site)</option>
+                                        <option value="Graphic Design">Simple Graphic Design (Branding / Social Media)</option>
+                                        <option value="KG Association - Finance & Tax">KG Association (Finance &amp; Tax Services)</option>
+                                        <option value="PromptShelff">PromptShelff (ChatGPT Prompt Pack)</option>
+                                        <option value="1LakhGoals - Early Access / Notify Me">1LakhGoals (Early Access / Updates)</option>
+                                        <option value="Other Enquiry">Other Enquiry</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="sender-message" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">Project Details / Message *</label>
+                                    <textarea id="sender-message" name="message" rows="4" required placeholder="Tell us a little about what you need..." class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:bg-white focus:border-mint-600 focus:ring-2 focus:ring-mint-600/20 outline-none transition-all resize-y"></textarea>
+                                </div>
+                                <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                    <button type="submit" class="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-mint-600 hover:bg-mint-700 text-white font-semibold text-sm shadow-mint transition-all cursor-pointer">
+                                        <span>Compose &amp; Send Message</span>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                                    </button>
+                                    <span class="text-xs text-slate-500 text-center sm:text-right">Direct delivery to <strong class="text-slate-800">work@mindmint.co.in</strong></span>
+                                </div>
+                            </form>
+
+                            <div id="form-confirmation" class="hidden mt-6 p-5 rounded-2xl bg-mint-50 border border-mint-200 text-mint-900">
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-6 h-6 text-mint-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    <div>
+                                        <h4 class="font-display font-bold text-base text-slate-900">Enquiry Prepared for work@mindmint.co.in!</h4>
+                                        <p class="text-xs sm:text-sm text-slate-600 mt-1">Your email client has been triggered with your formatted enquiry. You can also copy the email address directly on the left if needed.</p>
+                                        <button type="button" onclick="resetEnquiryForm()" class="mt-3 text-xs font-semibold text-mint-700 underline hover:text-mint-900 cursor-pointer">Send another message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-300 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-slate-850 border border-slate-700/80 flex items-center justify-center shrink-0">
+                        <svg class="w-6 h-6" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M10 6H7C6.44772 6 6 6.44772 6 7V10" stroke="#34D399" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.7"/>
+                            <path d="M26 30H29C29.5523 30 30 29.5523 30 29V26" stroke="#34D399" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.7"/>
+                            <path d="M9.5 25.5V12.5L18 19.5L26.5 12.5V25.5" stroke="#10B981" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="26.5" cy="9.5" r="2.2" fill="#34D399"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-display font-bold text-lg text-white">mind<span class="text-mint-400">mint</span><span class="text-slate-400 font-medium">.co.in</span></span>
+                        <p class="text-xs text-slate-400">Web &bull; Design &bull; Digital Products &bull; Finance &amp; Tax</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-6 text-sm">
+                    <a href="#home" class="hover:text-mint-400 transition-colors">Home</a>
+                    <a href="#products" class="hover:text-mint-400 transition-colors">Our Products</a>
+                    <a href="https://promptshelff.netlify.app/" target="_blank" rel="noopener noreferrer" class="hover:text-mint-400 transition-colors">PromptShelff</a>
+                    <a href="#contact" class="hover:text-mint-400 transition-colors">Contact Us</a>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+                <p>&copy; 2026 mindmint.co.in. All rights reserved.</p>
+                <a href="mailto:work@mindmint.co.in" class="text-mint-400 hover:text-mint-300 font-medium">work@mindmint.co.in</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                menuIconOpen.classList.add('hidden');
+                menuIconClose.classList.remove('hidden');
+            } else {
+                closeMobileMenu();
+            }
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            menuIconOpen.classList.remove('hidden');
+            menuIconClose.classList.add('hidden');
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'pointer-events-auto flex items-center gap-2.5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg border border-slate-700 text-sm font-medium transform transition-all duration-300 translate-y-2 opacity-0';
+            toast.innerHTML = `<span class="w-2 h-2 rounded-full bg-mint-400 shrink-0"></span><span>${message}</span>`;
+            container.appendChild(toast);
+            requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
+            setTimeout(() => {
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function copyEmailAddress() {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = 'work@mindmint.co.in';
+            tempInput.setAttribute('readonly', '');
+            tempInput.style.position = 'absolute';
+            tempInput.style.left = '-9999px';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                const btnText = document.getElementById('copy-btn-text');
+                btnText.textContent = 'Copied!';
+                showToast('Copied work@mindmint.co.in to clipboard');
+                setTimeout(() => { btnText.textContent = 'Copy'; }, 2500);
+            } catch (err) {
+                showToast('Email: work@mindmint.co.in');
+            } finally {
+                document.body.removeChild(tempInput);
+            }
+        }
+
+        function filterProducts(category, clickedBtn) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('tab-inactive');
+            });
+            clickedBtn.classList.remove('tab-inactive');
+            clickedBtn.classList.add('tab-active');
+            document.querySelectorAll('.product-card').forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                card.style.display = (category === 'all' || cardCat === category) ? 'flex' : 'none';
+            });
+        }
+
+        function selectServiceAndScroll(serviceValue) {
+            const selectEl = document.getElementById('service-select');
+            if (selectEl) selectEl.value = serviceValue;
+            const contactSection = document.getElementById('contact');
+            if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+            showToast(`Selected: ${serviceValue}`);
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('sender-name').value.trim();
+            const email = document.getElementById('sender-email').value.trim();
+            const service = document.getElementById('service-select').value;
+            const message = document.getElementById('sender-message').value.trim();
+            const subject = encodeURIComponent(`[mindmint.co.in Enquiry] ${service} — from ${name}`);
+            const body = encodeURIComponent(`Hello mindmint.co.in Team,\n\nName: ${name}\nEmail: ${email}\nService/Product: ${service}\n\nMessage:\n${message}\n`);
+            document.getElementById('form-confirmation').classList.remove('hidden');
+            showToast('Opening email client for work@mindmint.co.in...');
+            window.location.href = `mailto:work@mindmint.co.in?subject=${subject}&body=${body}`;
+        }
+
+        function resetEnquiryForm() {
+            document.getElementById('enquiry-form').reset();
+            document.getElementById('form-confirmation').classList.add('hidden');
+        }
+
+        function switchView(view) {
+            if (view === 'all') {
+                const allBtn = document.querySelector('.filter-btn');
+                if (allBtn) filterProducts('all', allBtn);
+            }
+        }
+    </script>
+</body>
+</html>
